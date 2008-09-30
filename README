@@ -1,0 +1,23 @@
+Piki
+
+= 使い方
+
+ 1. index.php をサーバーに置きます
+
+ 2. スクリプトを配置したディレクトリに書き込み権限を与えておく必要があります
+    $ chmod o+w .
+
+ 3. サイトの URL に合わせて $base_url を修正しておく必要があります
+    $base_url = 'http://localhost/piki/';
+    ↓
+    $base_url = 'http://jugyo.org/piki/';
+
+ 4. Basic 認証のユーザーIDとパスワードは初期状態で「admin」と「password」になっているので
+    適宜変更してください
+    $admin_name = 'admin';
+    $admin_password = 'password';
+    ↓
+    $admin_name = 'admin';
+    $admin_password = 'himitsu';
+
+最初に index.php アクセスしたときに DB の作成と初期化が行われます
