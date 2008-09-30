@@ -170,9 +170,10 @@ EOS;
       exit;
     }
     $title = htmlspecialchars($piki_page['title']);
-    $contents = $piki_page['body'];
     $page_link = "<a href=\"$base_url?id=$id\">$title</a>";
     $edit_link = "<a class=\"action\" href=\"$base_url?id=$id&action=edit\">edit</a>";
+    $contents = '<h2>' . $page_link . '</h2>' . $edit_link;
+    $contents .= '<pre>' . htmlspecialchars($piki_page['body']) . '</pre>';
   }
   
   $piki_pages = select_all();
@@ -239,7 +240,7 @@ EOS;
         color: black;
       }
       #contents {
-        margin: 8px 0;
+        margin: 0;
       }
       a {
         color: #0063F7;
@@ -263,8 +264,6 @@ EOS;
       $list
     </div>
     <div id="page">
-      <h2>$page_link</h2>
-      $edit_link
       <div id="contents">$contents</div>
     </div>
     <div id="footer"></div>
