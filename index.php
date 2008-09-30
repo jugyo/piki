@@ -56,8 +56,10 @@ function update($id, $title, $body) {
 
 function delete($id) {
   global $db;
-  $stmt = $db->prepare('delete from pages where id = :id');
-  return $stmt->execute(array(':id' => $id));
+  if ($id != '1') {
+    $stmt = $db->prepare('delete from pages where id = :id');
+    return $stmt->execute(array(':id' => $id));
+  }
 }
 
 function select($id) {
@@ -122,30 +124,24 @@ function get() {
     $title = htmlspecialchars($piki_page['title']);
     $body = htmlspecialchars($piki_page['body']);
     $cansel_url = $base_url . '?id=' . $id;
-    $delete_buttom = '';
+    $title_read_only = '';
     $contents = <<<EOS
       <form method="post">
-        <input type="text" name="title" value="$title" size="30"/><br />
+        <input type="text" name="title" value="$title" size="30" /><br />
         <textarea name="body" rows=20 cols=80>$body</textarea><br />
         <input type="hidden" name="id" value="$id" />
         <input type="hidden" name="action" value="edit" />
         <input type="submit" value="Save" />
         <a href="$cansel_url">Cansel</a>
       </form>
+EOS;
+    if ($id != 1) {
+      $contents .= <<<EOS
       <form method="post" onSubmit="return confirm('Are you sure?')">
         <input type="hidden" name="id" value="$id" />
         <input type="hidden" name="action" value="delete" />
         <input type="submit" value="Delete" />
       </form>
-      $delete_buttom
-EOS;
-    if ($id != 1) {
-      $delete_buttom = <<<EOS
-        <form method="post">
-          <input type="hidden" name="id" value="$id" />
-          <input type="hidden" name="action" value="delete" />
-          <input type="submit" value="Delete" />
-        </form>
 EOS;
     }
   } else if ($action == 'new') {
