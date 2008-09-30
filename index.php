@@ -69,7 +69,7 @@ function select($id) {
 
 function select_all() {
   global $db;
-  return $db->query('select id, title from pages order by title');
+  return $db->query('select id, title from pages order by created_at desc');
 }
 
 function login() {
@@ -125,7 +125,7 @@ function get() {
     $delete_buttom = '';
     $contents = <<<EOS
       <form method="post">
-        <input type="text" name="title" value="$title" />
+        <input type="text" name="title" value="$title" size="30"/><br />
         <textarea name="body" rows=20 cols=80>$body</textarea><br />
         <input type="hidden" name="id" value="$id" />
         <input type="hidden" name="action" value="edit" />
@@ -228,7 +228,6 @@ EOS;
         list-style-type: none;
       }
       #sidebar li.current_page {
-        font-weight: bold;
         color: black;
       }
       #sidebar li.current_page a {
