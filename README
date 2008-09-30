@@ -1,23 +1,23 @@
 Piki
 
-= �g����
+= 使い方
 
- 1. index.php ���T�[�o�[�ɒu���܂�
+ 1. index.php をサーバーに置きます
 
- 2. �X�N���v�g��z�u�����f�B���N�g���ɏ������݌�����^���Ă����K�v������܂�
+ 2. スクリプトを配置したディレクトリに書き込み権限を与えておく必要があります
     $ chmod o+w .
 
- 3. �T�C�g�� URL �ɍ��킹�� $base_url ���C�����Ă����K�v������܂�
+ 3. サイトの URL に合わせて $base_url を修正しておく必要があります
     $base_url = 'http://localhost/piki/';
-    ��
+    ↓
     $base_url = 'http://jugyo.org/piki/';
 
- 4. Basic �F�؂̃��[�U�[ID�ƃp�X���[�h�͏�����ԂŁuadmin�v�Ɓupassword�v�ɂȂ��Ă���̂�
-    �K�X�ύX���Ă�������
+ 4. Basic 認証のユーザーIDとパスワードは初期状態で「admin」と「password」になっているので
+    適宜変更してください
     $admin_name = 'admin';
     $admin_password = 'password';
-    ��
+    ↓
     $admin_name = 'admin';
     $admin_password = 'himitsu';
 
-�ŏ��� index.php �A�N�Z�X�����Ƃ��� DB �̍쐬�Ə��������s���܂�
+最初に index.php アクセスしたときに DB の作成と初期化が行われます
