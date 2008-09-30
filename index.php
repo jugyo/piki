@@ -132,6 +132,11 @@ function get() {
         <input type="submit" value="Save" />
         <a href="$cansel_url">Cansel</a>
       </form>
+      <form method="post" onSubmit="return confirm('Are you sure?')">
+        <input type="hidden" name="id" value="$id" />
+        <input type="hidden" name="action" value="delete" />
+        <input type="submit" value="Delete" />
+      </form>
       $delete_buttom
 EOS;
     if ($id != 1) {
