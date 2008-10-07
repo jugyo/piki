@@ -23,7 +23,8 @@ create table pages (
   id integer primary key,
   title varchar(255) unique,
   body text,
-  created_at timestamp default current_timestamp
+  created_at timestamp default current_timestamp,
+  updated_at timestamp default current_timestamp
 )
 SQL;
     $result = $db->query($sql);
@@ -50,7 +51,7 @@ function insert($title, $body) {
 
 function update($id, $title, $body) {
   global $db;
-  $stmt = $db->prepare('update pages set title = :title, body = :body where id = :id');
+  $stmt = $db->prepare('update pages set title = :title, body = :body, updated_at = current_timestamp where id = :id');
   return $stmt->execute(array(':id' => $id, ':title' => $title, ':body' => $body));
 }
 
