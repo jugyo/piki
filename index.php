@@ -72,7 +72,7 @@ function select($id) {
 
 function select_all() {
   global $db;
-  return $db->query('select id, title from pages order by created_at desc');
+  return $db->query('select id, title from pages order by updated_at desc');
 }
 
 function login() {
